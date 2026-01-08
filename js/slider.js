@@ -1,13 +1,3 @@
-// ========== ANIMACIÓN TYPEWRITER DEL H1 ==========
-const h1 = document.querySelector('.header-text h1');
-if (h1) {
-    h1.addEventListener('animationend', (e) => {
-        if (e.animationName === 'typewriter') {
-            h1.style.borderRight = 'none';
-        }
-    });
-}
-
 // ========== SLIDER INFINITO DE CLIENTES ==========
 const track = document.querySelector("#clients-track");
 const items = Array.from(track.children);
@@ -27,7 +17,7 @@ items.forEach(item => {
 // Animación infinita que se reinicia suavemente
 gsap.to(track, {
     x: -totalWidth,
-    duration: 30, // Ajusta la velocidad aquí (más bajo = más rápido)
+    duration: 10, // Ajusta la velocidad aquí (más bajo = más rápido)
     ease: "none",
     repeat: -1,
     modifiers: {

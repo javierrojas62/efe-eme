@@ -36,8 +36,7 @@ h1 {
     font-weight: 700;
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     letter-spacing: 0.3px;
-    animation: typewriter-center 3s ease-out 1, blink-caret 0.75s step-end 3s infinite;
-    border-right: 3px solid var(--primary-color);
+    animation: typewriter-center 3s ease-out 1;
     display: inline-block;
 }
 
@@ -267,6 +266,8 @@ img {
     border-radius: 12px;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
 }
 
 .client:hover {
