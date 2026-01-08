@@ -1,35 +1,131 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 
-body {
+/* ========== RESET Y VARIABLES ========== */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #0a63b5;
+    --secondary-color: #ffffff;
+    --text-dark: #333;
+    --bg-light: #f5f5f5;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+h1,
+h2,
 h3 {
-    color: #0a63b5;
+    color: var(--primary-color);
+    line-height: 1.2;
+}
+
+h1 {
+    font-family: 'Montserrat', "Roboto", Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    letter-spacing: 0.3px;
+    animation: typewriter-center 3s ease-out 1, blink-caret 0.75s step-end 3s infinite;
+    border-right: 3px solid var(--primary-color);
+    display: inline-block;
+}
+
+@keyframes typewriter-center {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes blink-caret {
+    0%,
+    49% {
+        border-right-color: var(--primary-color);
+    }
+    50%,
+    100% {
+        border-right-color: transparent;
+    }
 }
 
 h2 {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: 1rem;
 }
 
+h3 {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ========== HEADER ========== */
 .header {
-    padding: 10px;
+    padding: 5px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.header-logo {
+    justify-self: start;
+}
+
+.header-spacer {
+    justify-self: end;
+    /* espacio minimal para centrar el título; no visible */
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.header-text {
     text-align: center;
-    display: flex;
-    justify-content: center;
 }
 
-.logo {
-    height: 70px;
-    border-radius: 10px;
+.header-text h1 {
+    margin-bottom: 5px;
 }
 
+.header-text h2 {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 400;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* ========== HERO BANNER ========== */
 .hero {
     position: relative;
     height: 50vh;
+    min-height: 400px;
     overflow: hidden;
 }
 
@@ -53,137 +149,408 @@ h2 {
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    background: rgba(0, 0, 0, .5);
-    padding: 30px;
+    /* background: rgba(0, 0, 0, .7); */
+    padding: 20px;
     border-radius: 15px;
+    max-width: 90%;
+    width: 600px;
 }
 
-.img-primera {
-    width: 15px;
+.hero-text h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
 .btn {
     display: inline-block;
-    margin-top: 20px;
-    padding: 15px 30px;
-    background: #0a63b5;
+    margin-top: 15px;
+    padding: 12px 25px;
+    background: var(--primary-color);
     color: white;
     text-decoration: none;
     border-radius: 10px;
-    border: solid 2px #ffffff;
+    border: solid 2px var(--secondary-color);
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
+.btn:hover {
+    background: white;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(10, 99, 181, 0.3);
+}
+
+/* ========== BLOQUES DE CONTENIDO ========== */
 .block {
     display: flex;
-    gap: 40px;
-    padding: 5px;
+    gap: 30px;
+    padding: 40px 20px;
     align-items: center;
-    padding-left: 30dvh;
-    padding-right: 30dvh;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.block img {
-    width: 45%;
+.block .text {
+    flex: 1;
+}
+
+.block-img {
+    flex: 1;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.block-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .block.reverse {
     flex-direction: row-reverse;
 }
 
-.contact {
-    background: #0a63b5;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    padding: 35px;
+.divider {
+    max-width: 1200px;
+    margin: 40px auto;
+    border: none;
+    border-top: 2px solid var(--bg-light);
 }
 
-.contact a {
+/* ========== SECCIÓN CLIENTES ========== */
+.clients {
+    padding: 60px 20px;
+    background: var(--bg-light);
+    text-align: center;
+}
+
+.clients h2 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.clients-subtitle {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+.clients-slider {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.clients-track {
+    display: flex;
+    gap: 60px;
+    width: max-content;
+}
+
+.client {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+    padding: 20px 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.client:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.client img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+.client span {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 500;
+    color: var(--text-dark);
+    white-space: nowrap;
+}
+
+/* ========== CONTACTO ========== */
+.contact {
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     color: white;
     text-decoration: none;
+    transition: var(--transition);
+    padding: 10px;
+    border-radius: 8px;
 }
 
-.map {
-    width: 100%;
-    height: 450px;
-    border: 0;
-}
- .clients { 
-            padding: 60px 20px; 
-            background: #f5f5f5; 
-            text-align: center; 
-        }
-
-        .clients h3 {
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: #333;
-        }
-
-        .clients-slider {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .clients-track {
-            display: flex;
-            gap: 60px;
-            width: max-content;
-        }
-
-        .client {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-shrink: 0;
-            padding: 20px 30px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .client:hover {
-            transform: translateY(-5px);
-        }
-
-        .client img {
-            height: 50px;
-            width: 50px;
-            object-fit: contain;
-        }
-
-        .client span {
-            font-size: 16px;
-            font-weight: 500;
-            color: #333;
-            white-space: nowrap;
-        }
-
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
-.whatsapp-float img {
-    width: 55px;
+.contact-item img {
+    width: 35px;
+    height: 35px;
 }
 
+.contact-item span {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+/* ========== MAPA ========== */
 .map-wrapper {
-    display: flex;
-    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    background: white;
+}
+
+.map-title {
+    margin-bottom: 30px;
+    color: var(--primary-color);
 }
 
 .map-wrapper iframe {
     max-width: 1200px;
     width: 100%;
+    height: 450px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
 }
 
+/* ========== FOOTER ========== */
 footer {
-    background: black;
+    background: #1a1a1a;
     color: white;
     text-align: center;
-    padding: 7px;
+    padding: 30px 20px;
+}
+
+footer img {
+    width: 80px;
+    border-radius: 8px;
+    margin: 0 auto 15px;
+    transition: var(--transition);
+}
+
+footer img:hover {
+    transform: scale(1.1);
+}
+
+footer p {
+    margin: 8px 0;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+.footer-location {
+    color: #aaa;
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+}
+
+/* ========== WHATSAPP FLOTANTE ========== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        height: 50px;
+    }
+
+    .hero {
+        height: 40vh;
+        min-height: 350px;
+    }
+
+    .hero-text {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    .block {
+        flex-direction: column;
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .block.reverse {
+        flex-direction: column;
+    }
+
+    .block-img {
+        max-width: 100%;
+    }
+
+    .contact {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 15px;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .clients-track {
+        gap: 40px;
+    }
+
+    .client {
+        padding: 15px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .map-wrapper iframe {
+        height: 350px;
+    }
+
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-float img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .header-text h2 {
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        height: 35vh;
+        min-height: 300px;
+    }
+
+    .hero-text {
+        padding: 12px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .block {
+        padding: 20px 10px;
+    }
+
+    .clients {
+        padding: 40px 10px;
+    }
+
+    .clients-track {
+        gap: 30px;
+    }
+
+    .client {
+        padding: 12px 15px;
+    }
+
+    .client img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .contact {
+        padding: 25px 10px;
+    }
+
+    .map-wrapper {
+        padding: 30px 10px;
+    }
+
+    .map-wrapper iframe {
+        height: 300px;
+        border-radius: 10px;
+    }
+
+    footer {
+        padding: 20px 10px;
+    }
+
+    footer img {
+        width: 60px;
+    }
+}
+
+/* Desktop grande */
+@media (min-width: 1400px) {
+    .block {
+        max-width: 1400px;
+        padding: 60px 40px;
+    }
+
+    .hero {
+        height: 60vh;
+    }
 }
